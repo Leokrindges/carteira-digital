@@ -6,7 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
 import { useState } from "react";
-// import ModalTransfer from "./Modal";
+import ModalTransfer from "./Modal";
 
 export default function Navbar() {
   const [modalCreate, setModalCreate] = useState(false);
@@ -43,7 +43,7 @@ export default function Navbar() {
           </Typography>
         </Toolbar>
       </AppBar>
-      {/* <ModalTransfer isOpen={modalCreate} onClose={closeModal} /> */}
+      <ModalTransfer isOpen={modalCreate} onClose={closeModal} />
     </Box>
   );
 }

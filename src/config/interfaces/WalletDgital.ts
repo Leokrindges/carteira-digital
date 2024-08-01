@@ -1,4 +1,4 @@
-export interface Carteira {
+export interface WalletDigital {
   id: string;
   value: number;
   description: string;
@@ -6,6 +6,6 @@ export interface Carteira {
 }
 
 export enum TypeTransaction {
-  "Entrada",
-  "Saida",
+  Entrada = "Entrada",
+  Saida = "Saida",
 }

@@ -90,6 +90,7 @@ export default function ModalTransfer({ isOpen, onClose }: ModalTransferProps) {
     carteira.push(data);
 
     if (type === "Entrada") {
+        
       dispatch(incrementByAmount(amount));
     } else {
       dispatch(decrementByAmount(amount));

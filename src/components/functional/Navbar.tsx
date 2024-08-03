@@ -42,7 +42,10 @@ export default function Navbar() {
             Nova Transferência
           </Button>
           <Typography paddingLeft={3} color="inherit">
-            R$ ${balance.value}
+            {new Intl.NumberFormat("pt-br", {
+              style: "currency",
+              currency: "BRL",
+            }).format(balance.value)}
           </Typography>
         </Toolbar>
       </AppBar>

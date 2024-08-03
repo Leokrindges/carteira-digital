@@ -12,8 +12,16 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { v4 as uuidv4 } from "uuid";
-import { TypeTransaction, WalletDigital } from "../../config/interfaces/WalletDgital";
+import {
+  TypeTransaction,
+  WalletDigital,
+} from "../../config/interfaces/WalletDgital";
 import { carteira } from "../../config/data/carteira.data";
+import { useAppDispatch } from "../../store/hooks";
+import {
+  decrementByAmount,
+  incrementByAmount,
+} from "../../store/modules/accountbalance/accountBalanceSlice";
 
 const style = {
   position: "absolute",
@@ -63,6 +71,8 @@ export default function ModalTransfer({ isOpen, onClose }: ModalTransferProps) {
     return true;
   };
 
+  const dispatch = useAppDispatch();
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -78,8 +88,14 @@ export default function ModalTransfer({ isOpen, onClose }: ModalTransferProps) {
     }
 
     carteira.push(data);
+
+    if (type === "Entrada") {
+      dispatch(incrementByAmount(amount));
+    } else {
+      dispatch(decrementByAmount(amount));
+    }
+
     console.log(carteira);
-    
 
     setAlertOpen(false);
     setType(TypeTransaction.Entrada);

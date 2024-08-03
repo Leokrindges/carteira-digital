@@ -7,6 +7,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import ModalTransfer from "./Modal";
+import { useAppSelector } from "../../store/hooks";
+import { selectBalance } from "../../store/modules/accountbalance/accountBalanceSlice";
 
 export default function Navbar() {
   const [modalCreate, setModalCreate] = useState(false);
@@ -18,6 +20,7 @@ export default function Navbar() {
   const closeModal = () => {
     setModalCreate(false);
   };
+  const balance = useAppSelector(selectBalance);
 
   return (
     <Box sx={{ flexGrow: 3 }}>
@@ -39,7 +42,7 @@ export default function Navbar() {
             Nova Transferência
           </Button>
           <Typography paddingLeft={3} color="inherit">
-            R$ 100,00
+            R$ ${balance.value}
           </Typography>
         </Toolbar>
       </AppBar>

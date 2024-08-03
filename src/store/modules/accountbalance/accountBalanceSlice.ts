@@ -19,7 +19,7 @@ const initialState: BalanceState = {
   },
 })
 
-export const { incrementByAmount } = balanceSlice.actions
+export const { incrementByAmount, decrementByAmount } = balanceSlice.actions
 
 export const selectBalance = (accountBalance: AccountBalance) => accountBalance.balance
 

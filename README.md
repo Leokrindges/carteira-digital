@@ -1,30 +1,25 @@
-# React + TypeScript + Vite
+# CARTEIRA DIGITAL
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto tem como objetivo implementar o uso do [Material UI](https://mui.com/) junto com o [Redux Toollkit](https://redux-toolkit.js.org/). Nele, será possível cadastrar transferências de valores, seja como Entrada ou Saída, além de listar todas as transferências detalhadas. O principal foco é a integração e utilização do Material UI e do Redux Toolkit.
 
-Currently, two official plugins are available:
+## Objetivo do Serviço
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O principal objetivo deste projeto é solidificar os conceitos aprendidos sobre Material UI e Redux Toollkit, que são fundamentais no desenvolvimento front-end.
 
-## Expanding the ESLint configuration
+## Clonar repositório
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+ Clique [aqui](https://github.com/Leokrindges/carteira-digital.git) para clonar o repositório
 
-- Configure the top-level `parserOptions` property like this:
+## Instalação
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+Instalar as depêndencias do projeto
+
+```bash
+   npm install | yarn install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Iniciar o projeto
+
+```bash
+ npm run dev | yarn run dev
+```

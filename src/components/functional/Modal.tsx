@@ -16,12 +16,13 @@ import {
   TypeTransaction,
   WalletDigital,
 } from "../../config/interfaces/WalletDgital";
-import { carteira } from "../../config/data/carteira.data";
 import { useAppDispatch } from "../../store/hooks";
 import {
   decrementByAmount,
   incrementByAmount,
 } from "../../store/modules/accountbalance/accountBalanceSlice";
+import { addTransfer } from "../../store/modules/transfer/transferSlice";
+import { useSnackbar } from "notistack";
 
 const style = {
   position: "absolute",
@@ -72,6 +73,7 @@ export default function ModalTransfer({ isOpen, onClose }: ModalTransferProps) {
   };
 
   const dispatch = useAppDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -86,17 +88,14 @@ export default function ModalTransfer({ isOpen, onClose }: ModalTransferProps) {
     if (!validateInputs(data)) {
       return;
     }
-
-    carteira.push(data);
+    dispatch(addTransfer(data));
+    enqueueSnackbar("Transferência criada com sucesso", { variant: "success" });
 
     if (type === "Entrada") {
-        
       dispatch(incrementByAmount(amount));
     } else {
       dispatch(decrementByAmount(amount));
     }
-
-    console.log(carteira);
 
     setAlertOpen(false);
     setType(TypeTransaction.Entrada);

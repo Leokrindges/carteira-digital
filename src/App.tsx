@@ -7,13 +7,16 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "./config/theme/DefaultTheme";
 import { store } from "./store";
 import { Provider } from "react-redux";
+import { SnackbarProvider } from "notistack"; //npm install notistack
 
 export default function App() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <AppRoutes />
+        <SnackbarProvider>
+          <CssBaseline />
+          <AppRoutes />
+        </SnackbarProvider>
       </ThemeProvider>
     </Provider>
   );

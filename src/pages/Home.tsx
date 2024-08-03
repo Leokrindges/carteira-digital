@@ -1,15 +1,12 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 import TableTransections from "../components/functional/TableTransactions";
-import { carteira } from "../config/data/carteira.data";
-import { useEffect, useState } from "react";
-import { WalletDigital } from "../config/interfaces/WalletDgital";
+import { useSelector } from "react-redux";
+import { listTransfers } from "../store/modules/transfer/transferSlice";
+import { store } from "../store";
 
 export function Home() {
-  const [walletDigital, setwalletDigital] = useState<Array<WalletDigital>>([]);
 
-  useEffect(() => {
-    setwalletDigital([...carteira]);
-  }, []);
+  const transfers = useSelector(() => listTransfers(store.getState().transfers));
 
   return (
     <Container
@@ -26,8 +23,12 @@ export function Home() {
     >
       <Stack maxWidth="lg" spacing={4} sx={{ width: "100%" }}>
         <Box component="section">
-          <Typography>{`AINDA NÃO FOI EFETUADA NENHUMA TRANSFERÊNCIA`}</Typography>
-          <TableTransections listTransfer={walletDigital}></TableTransections>
+          <Typography>
+            {transfers.length === 0
+              ? "AINDA NÃO FOI EFETUADA NENHUMA TRANSFERÊNCIA"
+              : `TOTAL DE TRANSFERÊNCIAS REALIZADAS: ${transfers.length}`}
+          </Typography>
+          <TableTransections listTransfer={transfers}></TableTransections>
         </Box>
       </Stack>
     </Container>

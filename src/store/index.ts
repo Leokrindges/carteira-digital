@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { balanceReducer } from "./modules/accountbalance/accountBalanceSlice";
+import { transfersAdapter } from "./modules/transfer/transferSlice";
 
 export const store = configureStore({
   reducer: {
     balance: balanceReducer,
+    transfers: transfersAdapter,
   },
 });
 
